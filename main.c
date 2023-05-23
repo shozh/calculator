@@ -1,11 +1,7 @@
 #include <stdio.h>
-
-#include "lib.c"
-#include "stack.c"
-
+#include "stack.h"
 
 int main() {
-    printf("Hello, World!\n");
 
     stack st = {{1, 3, 7}, 3};
 
