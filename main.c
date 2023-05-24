@@ -1,21 +1,28 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include "stack.h"
+#include "list.h"
 
 int main() {
 
-    stack st = {{1, 3, 7}, 3};
 
-    print(st);
-    push(&st, 6);
-    print(st);
+    Node a = {3}, b = {17}, c = {21}, d = {10}, head = {7};
+    a.next = &b;
+    b.next = &c;
+    c.next = &d;
+    d.next = NULL;
+    Node* list = &a;
 
-    int y;
-    y = pop(&st);
-    printf("%d\n", y);
-    print(st);
+    print_list(list);
 
-    printf("%d", is_empty(st));
+    list = &head;
+    head.next = &a;
+
+    print_list(list);
+
+    push_front(&list, 2);
+
+    print_list(list);
 
     return 0;
 }
