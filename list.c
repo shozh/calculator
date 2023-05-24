@@ -61,9 +61,38 @@ void insert(Node** plist, Data x, int i) {
                 return;
         }
 
-
         new->next = list->next;
         list->next = new;
     }
+}
+
+Data pop_front(Node** plist) {
+    if (is_list_empty(*plist))
+        return;
+
+    Node* list = *plist;
+    Data ret = list->data;
+    *plist = list->next;
+    free(list);
+    return ret;
+}
+
+Data pop_back(Node** plist) {
+    if (is_list_empty(*plist))
+        return;
+
+    Node* list = *plist;
+    if (list->next == NULL) {
+        Data ret = list->data;
+        *plist = NULL;
+        return ret;
+    }
+
+    Node* t;
+    for (t = *plist; t->next->next != NULL; t = t->next);
+    Data ret = t->next->data;
+    free(t->next);
+    t->next = NULL;
+    return ret;
 }
 

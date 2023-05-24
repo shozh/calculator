@@ -14,7 +14,13 @@ int main() {
     push_back(&lst, -2);
     print_list(lst);
 
-    insert(&lst, 7, 4);
+    insert(&lst, 7, 3);
+    print_list(lst);
+
+    pop_front(&lst);
+    print_list(lst);
+
+    pop_back(&lst);
     print_list(lst);
 
     return 0;
