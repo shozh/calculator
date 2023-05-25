@@ -35,16 +35,37 @@ void push_back(Node** plist, Data x) {
     t->next = new;
 }
 
-Node* arr2list(const Data* b, int n) {
-    Node* new = malloc(n *sizeof(Node));
+//Node* arr2list(const Data* b, int n) {
+//    Node* new = malloc(n *sizeof(Node));
+//
+//    new[0].data = b[0];
+//    for (int i = 1; i < n; i++) {
+//        new[i-1].next = &new[i];
+//        new[i].data = b[i];
+//    }
+//    new[n-1].next = NULL;
+//    return new;
+//}
 
-    new[0].data = b[0];
-    for (int i = 1; i < n; i++) {
-        new[i-1].next = &new[i];
-        new[i].data = b[i];
+Node* arr2list(const Data* b, int n) {
+    Node* head = NULL;
+    Node* cur = NULL;
+    Node* prev = NULL;
+
+    for (int i = 0; i < n; i++) {
+        cur = (Node*)malloc(sizeof(Node));
+        cur->data = b[i];
+        cur->next = NULL;
+
+        if (prev == NULL) {
+            head = cur;
+        } else {
+            prev->next = cur;
+        }
+        prev = cur;
     }
-    new[n-1].next = NULL;
-    return new;
+
+    return head;
 }
 
 void insert(Node** plist, Data x, int i) {
@@ -68,7 +89,7 @@ void insert(Node** plist, Data x, int i) {
 
 Data pop_front(Node** plist) {
     if (is_list_empty(*plist))
-        return;
+        return 404;
 
     Node* list = *plist;
     Data ret = list->data;
@@ -79,7 +100,7 @@ Data pop_front(Node** plist) {
 
 Data pop_back(Node** plist) {
     if (is_list_empty(*plist))
-        return;
+        return 404;
 
     Node* list = *plist;
     if (list->next == NULL) {
@@ -96,3 +117,61 @@ Data pop_back(Node** plist) {
     return ret;
 }
 
+//Data erase(Node** plist, int i) {
+//    if (is_list_empty(*plist))
+//        return 404;
+//
+//    if (i == 0)
+//        return pop_front(plist);
+//
+//    Node* t;
+//    int j;
+//    for (t = *plist, j = 0; t->next != NULL; t = t->next, j++);
+//
+//    if (i == j)
+//        return pop_back(plist);
+//
+//    if (i > j)
+//        return 404;
+//
+//    for (t = *plist, j = 0; j < i - 1; t = t->next, j++);
+//
+//
+//    Node* cur = t->next;
+//    Data ret = cur->data;
+//    t->next = cur->next;
+//    free(cur);
+//    return ret;
+//}
+
+Data erase(Node** plist, int i) {
+    if (is_list_empty(*plist))
+        return 404;
+
+    if (i == 0)
+        return pop_front(plist);
+
+    Node* cur = *plist;
+    Node* prev = NULL;
+    int j = 0;
+
+    while (cur != NULL && j != i) {
+        prev = cur;
+        cur = cur->next;
+        j++;
+    }
+
+    if (cur == NULL)
+        return 404;
+
+    Data ret = cur->data;
+
+    if (prev == NULL)
+        *plist = cur->next;
+    else
+        prev->next = cur->next;
+
+    cur->next = NULL;
+    free(cur);
+    return ret;
+}
