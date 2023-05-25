@@ -3,6 +3,15 @@
 
 #include <stdbool.h>
 
+#define put_space(x) _Generic((x), \
+    int: printf("%d ", x), \
+    float: printf("%f", x), \
+    double: printf("%lf ", x), \
+    char*: printf("%s ", x), \
+    const char*: printf("%s ", x), \
+    char: printf("%c ", x) \
+)
+
 typedef int Data;
 typedef struct Node {
     Data data;
@@ -10,6 +19,8 @@ typedef struct Node {
 } Node;
 
 void print_list(Node*);
+
+void print_list1(Node*);
 
 void push_front(Node**, Data x);
 

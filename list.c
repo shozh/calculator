@@ -5,9 +5,34 @@
 
 void print_list(Node* list) {
     for (Node* p = list; p != NULL; p = p->next)
-        printf("%d ", p->data);
+        put_space(p->data);
     printf("\n");
 }
+
+void print_list1(Node* list) {
+    for (Node* p = list; p != NULL; p = p->next) {
+        switch (p->data) {
+            case 5000:
+                put_space("+");
+                break;
+            case 5001:
+                put_space("-");
+                break;
+            case 5002:
+                put_space("*");
+                break;
+            case 5003:
+                put_space("/");
+                break;
+            default:
+                put_space(p->data);
+        }
+    }
+
+
+    printf("\n");
+}
+
 
 void push_front(Node** plist, Data x) {
     Node *new = malloc(sizeof(Node));
