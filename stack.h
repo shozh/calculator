@@ -3,14 +3,21 @@
 
 #include <stdbool.h>
 
+typedef float data_s;
+
 typedef struct {
-    int a[1000];
+    data_s a[1000];
     int n;
 } stack;
 
 void print(stack);
-void push(stack*, int);
-int pop(stack*);
+
+void push(stack*, data_s);
+
+data_s pop(stack*);
+
 bool is_empty(stack);
+
+data_s top(stack);
 
 #endif

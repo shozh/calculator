@@ -12,14 +12,14 @@ void init(stack *st) {
     st->n = 0;
 }
 
-void push(stack *st, int x) {
+void push(stack *st, data_s x) {
     st->a[st->n] = x;
     st->n++;
 }
 
-int pop(stack *st) {
+data_s pop(stack *st) {
     return st->a[--st->n];
-/*    int ret = st->a[st->n-1];
+/*    data_s ret = st->a[st->n-1];
     st->n--;
     return ret; */
 }
@@ -30,3 +30,8 @@ bool is_empty(stack st) {
     return false;
 }
 
+data_s top(stack st) {
+    if (st.n == 0)
+        return 404;
+    return st.a[--st.n];
+}
