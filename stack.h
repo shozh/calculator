@@ -14,6 +14,8 @@ void print(stack);
 
 void push(stack*, data_s);
 
+void init(stack*);
+
 data_s pop(stack*);
 
 bool is_empty(stack);

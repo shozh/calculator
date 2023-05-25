@@ -94,8 +94,32 @@ Node* tokenize(char* s) {
             i--;
             free(s_temp);
         }
-        if(issix(s[i]))
-            push_back(&list, (float)issix(s[i]));
+        if(issix(s[i])) {
+            if ((i == 0 and s[i] == '-') or (i > 0 and s[i - 1] == '(' and s[i] == '-')) {
+                i++;
+                if (isdigit(s[i]) or (s[i] == '.')) {
+                    int start = i;
+                    i++;
+                    if ((i < n) and (isdigit(s[i]) or s[i] == '.'))
+                        i++;
+
+                    int size = ((i == n) ? i - start + 1 : i - start);
+                    char* s_temp = (char*)malloc((size + 2) * sizeof(char));
+                    s_temp[0] = '-';
+                    for (int j = start; j < start + size; j++)
+                        s_temp[j - start + 1] = s[j];
+                    s_temp[size] = '\0';
+
+                    push_back(&list, (float)atof(s_temp));
+                    i--;
+                    free(s_temp);
+                }
+
+            }
+            else
+                push_back(&list, (float)issix(s[i]));
+        }
+
 
         if (isdigit(s[i]) or (s[i] == '.')) {
             int start = i;
@@ -118,14 +142,39 @@ Node* tokenize(char* s) {
     return list;
 }
 
-
+float factor(float x, int n) {
+    float ret = 1;
+    for (int i = 0; i < n; i++)
+        ret *= x;
+    return ret;
+}
 
 
 int main() {
 
-    char* s = "(abc + xxx*2)/(z^3*(asd- 50))";
+    char* s = "(abc - xxx*2)/(z^3*(asd- 50))";
     Node* list = tokenize(s);
     print_list(list);
+
+    stack nums;
+    stack ops;
+    init(&nums);
+    init(&ops);
+
+    Node* t;
+    for (t = list; t != NULL, t = t->next) {
+        float x = t->data;
+        if (issix(x)) {
+            if(fabs(top(ops) - 404) < eps)
+                push(&ops, x);
+            else {
+                float up = top(ops);
+                if (up == '+' or up == '-' or up == '(')
+                    push(&ops, x);
+
+            }
+        }
+    }
 
     return 0;
 }
