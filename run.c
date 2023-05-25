@@ -6,6 +6,7 @@
 #include <string.h>
 #include <iso646.h>
 #include <ctype.h>
+#include <math.h>
 
 float abc = 5.34;
 float xxx = -97.12;
@@ -21,7 +22,9 @@ float ab12 = -1000.245;
     const char*: printf("%s\n", x) \
 )
 
-int get_value(const char *name) {
+#define eps 0.001
+
+float get_value(const char *name) {
     if (strcmp(name, "abc") == 0)
         return abc;
     if (strcmp(name, "xxx") == 0)
@@ -80,8 +83,8 @@ Node* tokenize(char* s) {
                 s_temp[j - start] = s[j];
             s_temp[size] = '\0';
 
-            int val_temp = get_value(s_temp);
-            if (val_temp == 404) {
+            float val_temp = get_value(s_temp);
+            if (fabs(val_temp - 404) < eps) {
                 putf("Not able to tokenize the expression");
                 exit(1);
             }
@@ -92,12 +95,12 @@ Node* tokenize(char* s) {
             free(s_temp);
         }
         if(issix(s[i]))
-            push_back(&list, issix(s[i]));
+            push_back(&list, (float)issix(s[i]));
 
-        if (isdigit(s[i])) {
+        if (isdigit(s[i]) or (s[i] == '.')) {
             int start = i;
             i++;
-            if ((i < n) and isdigit(s[i]))
+            if ((i < n) and (isdigit(s[i]) or s[i] == '.'))
                 i++;
 
             int size = ((i == n) ? i - start + 1 : i - start);
@@ -106,11 +109,13 @@ Node* tokenize(char* s) {
                 s_temp[j - start] = s[j];
             s_temp[size] = '\0';
 
+            push_back(&list, atof(s_temp));
             i--;
             free(s_temp);
         }
 
     }
+    return list;
 }
 
 
@@ -119,8 +124,8 @@ Node* tokenize(char* s) {
 int main() {
 
     char* s = "(abc + xxx*2)/(z^3*(asd- 50))";
-
-
+    Node* list = tokenize(s);
+    print_list(list);
 
     return 0;
 }
