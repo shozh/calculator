@@ -1,0 +1,4 @@
+/home/qoade/CLionProjects/calculator/cmake-build-debug/CMakeFiles/calculator.dir
+/home/qoade/CLionProjects/calculator/cmake-build-debug/CMakeFiles/runner.dir
+/home/qoade/CLionProjects/calculator/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/qoade/CLionProjects/calculator/cmake-build-debug/CMakeFiles/rebuild_cache.dir

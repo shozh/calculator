@@ -1,0 +1,20 @@
+# ninja log v5
+54	76	1685048763264233333	runner	2fdb1e2ec98d53bc
+1	77	1685048168211700951	CMakeFiles/runner.dir/stack.c.o	17860f188ce59997
+0	99	1685023988169908957	CMakeFiles/calculator.dir/main.c.o	144c15fa7e5797dc
+2	36	1685097150922305576	build.ninja	8c636a3171c79794
+1	39	1684880149008751006	CMakeFiles/calculator.dir/run.c.o	6d76e7a2e493db50
+0	40	1684934001049493032	CMakeFiles/calculator.dir/stack.c.o	ff7d713f66b188e2
+1	37	1685020217991708610	CMakeFiles/calculator.dir/list.c.o	30ef699139a25fd2
+99	132	1685023988201959681	calculator	3a0fcb4f464e4c4e
+1	54	1685048763240223706	CMakeFiles/runner.dir/run.c.o	c4d38e4b4e0cd018
+1	36	1685043734507438588	CMakeFiles/runner.dir/list.c.o	18638f557210c0cf
+1	47	1684875770189827341	CMakeFiles/calculator.dir/lib.c.o	6e3edf1f8767aae8
+1	66	1685109930174135776	CMakeFiles/runner.dir/run.c.o	c4d38e4b4e0cd018
+66	91	1685109930198135776	runner	2fdb1e2ec98d53bc
+1	53	1685110414394129342	CMakeFiles/calculator.dir/list.c.o	30ef699139a25fd2
+1	58	1685110414394129342	CMakeFiles/calculator.dir/stack.c.o	ff7d713f66b188e2
+1	73	1685110414414129342	CMakeFiles/calculator.dir/main.c.o	144c15fa7e5797dc
+1	39	1685110442914128963	CMakeFiles/calculator.dir/list.c.o	30ef699139a25fd2
+1	43	1685110442922128963	CMakeFiles/calculator.dir/main.c.o	144c15fa7e5797dc
+43	69	1685110442946128963	calculator	3a0fcb4f464e4c4e
