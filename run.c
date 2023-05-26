@@ -161,20 +161,22 @@ int main() {
     init(&nums);
     init(&ops);
 
-    Node* t;
-    for (t = list; t != NULL, t = t->next) {
-        float x = t->data;
-        if (issix(x)) {
-            if(fabs(top(ops) - 404) < eps)
-                push(&ops, x);
-            else {
-                float up = top(ops);
-                if (up == '+' or up == '-' or up == '(')
-                    push(&ops, x);
-
-            }
-        }
-    }
+//    Node* t;
+//    for (t = list; t != NULL, t = t->next) {
+//        float x = t->data;
+//        if (issix(x)) {
+//            if(fabs(top(ops) - 404) < eps)
+//                push(&ops, x);
+//            else {
+//                float up = top(ops);
+//                if (up == '+' or up == '-' or up == '(')
+//                    push(&ops, x);
+//                else if ((up == '*' or up == '/' or up == '^') and (fabs(x - 6005) < eps or fabs(x - 6006)))
+//                    push(&ops, x);
+//
+//            }
+//        }
+//    }
 
     return 0;
 }

@@ -12,7 +12,7 @@
     char: printf("%c ", x) \
 )
 
-typedef float Data;
+typedef int Data;
 typedef struct Node {
     Data data;
     struct Node *next;
@@ -20,7 +20,7 @@ typedef struct Node {
 
 void print_list(Node*);
 
-//void print_list1(Node*);
+void print_list1(Node*);
 
 void push_front(Node**, Data x);
 
